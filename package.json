@@ -1,0 +1,22 @@
+{
+  "name": "graphql-test-ecommerce",
+  "version": "1.0.0",
+  "description": "A simple E-commerce API with GraphQL and only 3 entities.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --env-file=.env index.js",
+    "seed": "node ./prisma/seeds.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.11.2",
+    "@prisma/client": "^5.22.0",
+    "graphql": "^16.9.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  }
+}
