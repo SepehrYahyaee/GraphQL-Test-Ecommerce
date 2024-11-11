@@ -8,5 +8,7 @@ export const productSchema = `#graphql
         description: String
         createdAt: String!
         updatedAt: String
+        user: User!
+        comments: [Comment!]
     }
 `;

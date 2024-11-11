@@ -13,5 +13,7 @@ export const commentSchema = `#graphql
         rate: CommentRating
         createdAt: String!
         updatedAt: String
+        user: User!
+        product: Product!
     }
 `;

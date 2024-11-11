@@ -15,5 +15,7 @@ export const userSchema = `#graphql
         role: Role!
         createdAt: String!
         updatedAt: String
+        comments: [Comment!]
+        products: [Product!]
     }
 `;

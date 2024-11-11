@@ -6,5 +6,5 @@ export const userService = {
     },
     retrieveSpecificUser(id) {
         return prisma.user.findUnique({ where: { id } })
-    }
+    },
 };

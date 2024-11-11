@@ -10,6 +10,18 @@ const resolvers = {
         product: productResolvers.getSpecificProduct,
         comments: commentResolvers.getAllComments,
         comment: commentResolvers.getSpecificComment,
+    },
+    User: {
+        comments: commentResolvers.getAllCommentsByUser,
+        products: productResolvers.getAllProductsByUser,
+    },
+    Product: {
+        user: userResolvers.getSpecificUserFromProduct,
+        comments: commentResolvers.getAllCommentsOnProduct,
+    },
+    Comment: {
+        user: userResolvers.getSpecificUserFromComment,
+        product: productResolvers.getSpecificProductByComment,
     }
 };
 

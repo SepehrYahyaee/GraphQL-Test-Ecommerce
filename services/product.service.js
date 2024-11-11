@@ -6,5 +6,12 @@ export const productService = {
     },
     retrieveSpecificProduct(id) {
         return prisma.product.findUnique({ where: { id }});
-    }
+    },
+    retrieveAllProductsByUser(userId) {
+        return prisma.product.findMany({
+            where: {
+                byUser: userId,
+            }
+        });
+    },
 };

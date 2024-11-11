@@ -6,5 +6,11 @@ export const productResolvers = {
     },
     async getSpecificProduct(parent, args, context) {
         return await productService.retrieveSpecificProduct(+args.id);
+    },
+    async getAllProductsByUser(parent, args, context) {
+        return await productService.retrieveAllProductsByUser(parent.id);
+    },
+    async getSpecificProductByComment(parent, args, context) {
+        return await productService.retrieveSpecificProduct(+parent.onProduct);
     }
 }

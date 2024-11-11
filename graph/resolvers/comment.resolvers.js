@@ -6,5 +6,11 @@ export const commentResolvers = {
     },
     async getSpecificComment(parent, args, context) {
         return await commentService.retrieveSpecificComment(+args.id);
-    }
+    },
+    async getAllCommentsByUser(parent, args, context) {
+        return await commentService.retrieveAllCommentsByUser(parent.id);
+    },
+    async getAllCommentsOnProduct(parent, args, context) {
+        return await commentService.retrieveAllCommentsOnProduct(+parent.id);
+    },
 }
