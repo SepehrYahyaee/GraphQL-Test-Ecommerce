@@ -22,6 +22,9 @@ const resolvers = {
     Comment: {
         user: userResolvers.getSpecificUserFromComment,
         product: productResolvers.getSpecificProductByComment,
+    },
+    Mutation: {
+        register: userResolvers.register,
     }
 };
 

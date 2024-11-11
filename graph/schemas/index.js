@@ -14,6 +14,9 @@ type Query {
     product(id: ID!): Product
     comment(id: ID!): Comment
 }
+type Mutation {
+    register(userName: String!, password: String!): User!
+}
 `;
 
 export default typeDefs;
