@@ -10,6 +10,9 @@ type Query {
     users: [User]
     products: [Product]
     comments: [Comment]
+    user(id: ID!): User
+    product(id: ID!): Product
+    comment(id: ID!): Comment
 }
 `;
 

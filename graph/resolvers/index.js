@@ -4,9 +4,12 @@ import { commentResolvers } from "./comment.resolvers.js";
 
 const resolvers = {
     Query: {
-        users: userResolvers.users,
-        products: productResolvers.products,
-        comments: commentResolvers.comments,
+        users: userResolvers.getAllUsers,
+        user: userResolvers.getSpecificUser,
+        products: productResolvers.getAllProducts,
+        product: productResolvers.getSpecificProduct,
+        comments: commentResolvers.getAllComments,
+        comment: commentResolvers.getSpecificComment,
     }
 };
 
