@@ -1,4 +1,5 @@
-import { hash } from "../../providers/index.js";
+import { GraphQLError } from "graphql";
+import { hash, verify, createToken } from "../../providers/index.js";
 import { userService } from "../../services/index.js";
 
 export const userResolvers = {
@@ -17,10 +18,21 @@ export const userResolvers = {
     async register(parent, args, context) {
         const user = await userService.retrieveUserByUserName(args.userName);
 
-        if (user) throw new Error("This user already exists!");
+        if (user) throw new GraphQLError("This user already exists!");
 
         const hashedPassword = await hash(args.password);
 
         return await userService.insertUser(args.userName, hashedPassword);
+    },
+    async login(parent, args, context) {
+        const user = await userService.retrieveUserByUserName(args.userName);
+        
+        if (!user) throw new GraphQLError("Username or password is wrong!");
+
+        const pwIsVerified = await verify(user.password, args.password);
+
+        if (!pwIsVerified) throw new GraphQLError("Username or password is wrong!");
+
+        return await createToken({ id: user.id }, process.env.SECRET_KEY, process.env.ACCESS_TOKEN_EXPIRE_TIME);
     },
 }

@@ -25,6 +25,7 @@ const resolvers = {
     },
     Mutation: {
         register: userResolvers.register,
+        login: userResolvers.login,
     }
 };
 

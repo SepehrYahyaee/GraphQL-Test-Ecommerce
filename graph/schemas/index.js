@@ -14,8 +14,12 @@ type Query {
     product(id: ID!): Product
     comment(id: ID!): Comment
 }
+type AuthResult {
+    accessToken: String!
+}
 type Mutation {
     register(userName: String!, password: String!): User!
+    login(userName: String!, password: String!): AuthResult!
 }
 `;
 
