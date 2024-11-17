@@ -14,4 +14,24 @@ export const productService = {
             }
         });
     },
+    insertProduct(data) {
+        return prisma.product.create({
+            data,
+        });
+    },
+    modifyProduct(id, data) {
+        return prisma.product.update({
+            where: {
+                id,
+            },
+            data,
+        });
+    },
+    removeProduct(id) {
+        return prisma.product.delete({
+            where: {
+                id,
+            }
+        });
+    },
 };

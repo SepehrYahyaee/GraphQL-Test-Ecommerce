@@ -26,6 +26,14 @@ const resolvers = {
     Mutation: {
         register: userResolvers.register,
         login: userResolvers.login,
+        updateUser: userResolvers.updateUser,
+        deleteAccount: userResolvers.deleteUser,
+        createProduct: productResolvers.createProduct,
+        updateProduct: productResolvers.updateProduct,
+        deleteProduct: productResolvers.deleteProduct,
+        createComment: commentResolvers.createComment,
+        updateComment: commentResolvers.updateComment,
+        deleteComment: commentResolvers.deleteComment,
     }
 };
 

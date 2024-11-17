@@ -17,4 +17,19 @@ export const userService = {
             }
         });
     },
+    modifyUser(id, data) {
+        return prisma.user.update({
+            where: {
+                id,
+            },
+            data,
+        });
+    },
+    removeUser(id) {
+        return prisma.user.delete({
+            where: {
+                id
+            }
+        });
+    },
 };

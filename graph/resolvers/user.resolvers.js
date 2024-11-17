@@ -3,7 +3,9 @@ import { hash, verify, createToken } from "../../providers/index.js";
 import { userService } from "../../services/index.js";
 
 export const userResolvers = {
-    async getAllUsers() {
+    async getAllUsers(parent, args, context) {
+        if (context?.role !== "ADMIN") throw new GraphQLError("Unauthorized");
+
         return await userService.retrieveAllUsers();
     },
     async getSpecificUser(parent, args, context) {
@@ -34,5 +36,19 @@ export const userResolvers = {
         if (!pwIsVerified) throw new GraphQLError("Username or password is wrong!");
 
         return await createToken({ id: user.id }, process.env.SECRET_KEY, process.env.ACCESS_TOKEN_EXPIRE_TIME);
+    },
+    async updateUser(parent, args, context) {
+        if (!context?.userId) throw new GraphQLError("Unauthorized");
+
+        if (!(await userService.retrieveSpecificUser(args.id))) throw new GraphQLError("User not found");
+
+        return await userService.modifyUser(context.userId, args.updateObject);
+    },
+    async deleteUser(parent, args, context) {
+        if (!context.userId) throw new GraphQLError("Unauthorized");
+
+        if (!(await userService.retrieveSpecificUser(args.id))) throw new GraphQLError("User not found");
+        
+        return await userService.removeUser(context.userId);
     },
 }

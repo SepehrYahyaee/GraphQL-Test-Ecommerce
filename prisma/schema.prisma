@@ -58,6 +58,6 @@ model Comment {
   updatedAt DateTime       @updatedAt
   User      User           @relation(fields: [byUser], references: [id])
   byUser    String
-  Product   Product?       @relation(fields: [onProduct], references: [id])
-  onProduct Int?
+  Product   Product        @relation(fields: [onProduct], references: [id])
+  onProduct Int
 }

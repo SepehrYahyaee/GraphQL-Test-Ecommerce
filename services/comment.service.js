@@ -21,4 +21,24 @@ export const commentService = {
             }
         });
     },
+    insertComment(data) {
+        return prisma.comment.create({
+            data,
+        });
+    },
+    modifyComment(id, data) {
+        return prisma.comment.update({
+            where: {
+                id,
+            },
+            data,
+        });
+    },
+    removeComment(id) {
+        return prisma.comment.delete({
+            where: {
+                id,
+            }
+        });
+    },
 };
